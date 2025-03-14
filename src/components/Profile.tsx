@@ -24,7 +24,7 @@ const Profile: React.FC = () => {
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-3">Profile</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Quality Assurance professional with 7.4 years of experience specializing in test automation 
+              Quality Assurance professional with 7.7 years of experience specializing in test automation 
               for web, mobile, and API platforms. Experienced in building and maintaining automation 
               frameworks with JavaScript, Java, and Python. Strong focus on improving release 
               efficiency and delivery quality.
