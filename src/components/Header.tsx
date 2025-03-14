@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Phone, Mail, Link as LinkIcon } from "lucide-react";
 
@@ -49,7 +48,7 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         <h1 className="text-lg md:text-xl font-bold tracking-tight transition-all">
-          <span className="text-primary">Kowshik</span> Kumar
+          <span className="text-primary">Kowshik Kumar</span>
         </h1>
         
         <div className="hidden md:flex items-center space-x-2 text-sm">
