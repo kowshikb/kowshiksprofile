@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: '/kowshikb.github.io/', // Base path for GitHub Pages deployment
+  base: '/kowshiksprofile/', // Base path for GitHub Pages deployment
   plugins: [
     react(),
     mode === 'development' &&
