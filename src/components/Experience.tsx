@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface ExperienceItem {
   id: string;
@@ -16,12 +16,14 @@ const experienceData: ExperienceItem[] = [
     company: "SkillSoft",
     position: "Senior QA Engineer",
     points: [
-      "Automated 70+ features of an Edutech platform, including assignment creation, skill benchmarks, banners, live courses, and dynamic content. Reduced release time from 3 days to just 2 hours.",
+      "Automated 70+ features of an Edutech platform, including assignment creation, skill benchmarks, banners, live courses, and dynamic content. Implemented test automation for various scenarios, such as smoke, regression, sanity, and release cases. Enabled end-to-end automation flows, reducing release time from 3 days to just 2 hours, ensuring faster and more efficient delivery of features.",
       "Engineered an automation framework with Playwright and JavaScript.",
       "Integrated UI and API tests to meet sales team needs.",
+      "Used Git for version control.",
       "Integrated Jenkins for automated build and test workflows.",
-      "Integrated Docker in CI/CD pipelines for scalable test execution.",
-      "Managed team members across manual, functional, and automation tasks."
+      "Managed environments and maintained detailed logs.",
+      "Integrated Docker in CI/CD pipelines to automate testing workflows and developed Docker images for test automation frameworks, facilitating rapid scaling and execution of tests across multiple environments.",
+      "Managed team members across manual, functional, and automation tasks, ensuring smooth collaboration and timely execution of testing efforts."
     ]
   },
   {
@@ -29,10 +31,11 @@ const experienceData: ExperienceItem[] = [
     company: "Qapitol QA",
     position: "Senior Software Test Engineer",
     points: [
-      "Transformed credit card application process using Selenium with Java and TestNG. Reduced user onboarding time by 90%.",
-      "Automated card management and on-boarding APIs using Rest Assured.",
+      "We have transformed the credit card application process by harnessing the power of Selenium with Java and TestNG. Through automation, we have significantly reduced the user onboarding time by 90%",
+      "Automated card Management and On-boarding APIs using Rest assured",
+      "Automated critical statement validation scenarios with Rest Assured",
       "Reduced smoke and sanity suite execution time by 40%.",
-      "Increased functional test coverage by 20% by automating new features."
+      "Increased functional test coverage by 20 percent by automating new features."
     ]
   },
   {
@@ -40,8 +43,7 @@ const experienceData: ExperienceItem[] = [
     company: "PTW",
     position: "Senior Software Test Engineer",
     points: [
-      "Expanded regression and smoke suites using Java with Selenium, TestNG, and POM design pattern.",
-      "Integrated Jenkins for continuous integration and automated test execution.",
+      "Expanded regression and smoke suites by incorporating new test cases to minimize manual testing efforts using Java with Selenium, TestNG, and the Page Object Model (POM) design pattern. Integrated Jenkins for seamless continuous integration and automated test execution.",
       "Manually tested key functional areas of an E-commerce site."
     ]
   },
@@ -50,55 +52,67 @@ const experienceData: ExperienceItem[] = [
     company: "EA",
     position: "QA One",
     points: [
-      "Learned test case writing, various testing techniques, and Agile methodology.",
+      "Learned how to write test cases, various testing techniques, usage of different tools, and Agile methodology as a fresher.",
       "Tested new features of a popular life simulation game."
     ]
   }
 ];
 
 const Experience: React.FC = () => {
-  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({ skillsoft: true });
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({
+    skillsoft: true,
+  });
 
   const toggleExpand = (id: string) => {
-    setExpandedItems((prev) => ({ ...prev, [id]: !prev[id] }));
+    setExpandedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
 
   return (
     <AnimatedSection id="experience" delay={100}>
       <h2 className="section-title">Experience</h2>
-
-      <div className="space-y-3">
+      
+      <div className="space-y-4">
         {experienceData.map((item) => (
-          <div
+          <div 
             key={item.id}
-            className="border-b border-border last:border-0 pb-3 last:pb-0"
+            className="rounded-xl overflow-hidden border border-border bg-white transition-all duration-300 hover:shadow-md"
           >
-            <div
-              className="py-3 flex justify-between items-center cursor-pointer group"
+            <div 
+              className="p-4 flex justify-between items-center cursor-pointer"
               onClick={() => toggleExpand(item.id)}
             >
               <div>
-                <h3 className="text-lg font-medium" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                  {item.company}
-                </h3>
+                <h3 className="font-semibold text-lg">{item.company}</h3>
                 <p className="text-sm text-muted-foreground">{item.position}</p>
               </div>
-              <ChevronDown
-                size={16}
-                className={`text-muted-foreground transition-transform duration-300 ${
-                  expandedItems[item.id] ? "rotate-180" : ""
-                }`}
-              />
+              <button 
+                className="p-1 rounded-full hover:bg-secondary transition-colors"
+                aria-label={expandedItems[item.id] ? "Collapse" : "Expand"}
+              >
+                {expandedItems[item.id] ? (
+                  <ChevronUp size={18} />
+                ) : (
+                  <ChevronDown size={18} />
+                )}
+              </button>
             </div>
-
+            
             <div className={`smooth-accordion ${expandedItems[item.id] ? "open" : ""}`}>
-              <ul className="space-y-2 pb-3 text-sm text-foreground/70">
-                {item.points.map((point, index) => (
-                  <li key={index} className="pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-border">
-                    {point}
-                  </li>
-                ))}
-              </ul>
+              <div className="px-4 pb-4">
+                <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+                  {item.points.map((point, index) => (
+                    <li 
+                      key={index}
+                      className="pl-2"
+                    >
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         ))}

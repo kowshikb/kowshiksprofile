@@ -7,9 +7,9 @@ interface InterestTagProps {
 
 const InterestTag: React.FC<InterestTagProps> = ({ name }) => {
   return (
-    <span className="inline-flex items-center px-3 py-1.5 rounded-full border border-border text-sm text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors cursor-default">
+    <div className="inline-flex items-center px-3 py-1 rounded-full bg-secondary hover:bg-secondary/80 text-sm transition-all hover:translate-y-[-2px] cursor-default">
       {name}
-    </span>
+    </div>
   );
 };
 
