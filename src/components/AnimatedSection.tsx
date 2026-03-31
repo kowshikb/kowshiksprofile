@@ -22,27 +22,16 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay);
+          setTimeout(() => setIsVisible(true), delay);
           if (sectionRef.current) observer.unobserve(sectionRef.current);
         }
       },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1,
-      }
+      { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, [delay]);
 
@@ -51,8 +40,8 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       id={id}
       ref={sectionRef}
       className={cn(
-        "opacity-0 glass-card p-8 mb-8 transition-all duration-700 ease-out",
-        isVisible ? "opacity-100 translate-y-0" : "translate-y-8",
+        "mb-16 transition-all duration-700 ease-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
         className
       )}
     >
