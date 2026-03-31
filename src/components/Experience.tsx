@@ -12,6 +12,20 @@ interface ExperienceItem {
 
 const experienceData: ExperienceItem[] = [
   {
+    id: "skillsoft-principal",
+    company: "SkillSoft",
+    position: "Principal QA Engineer",
+    points: [
+      "Tested AI-powered products within Percipio's LX Studios platform, including AI Conversation Practice, AI-generated PowerPoint presentations, AI Course Creation, and AI Assessment Generation — ensuring quality across the full AI product suite on the Edutech platform.",
+      "Built and implemented the test automation framework from scratch using Playwright with JavaScript for both UI and API testing.",
+      "Played a cross-functional role from QA planning and test strategy to automation development and product delivery, collaborating closely with developers throughout the SDLC.",
+      "Integrated the automation suite with Git for version control, Jenkins for CI/CD pipelines, and Docker for containerized test execution across environments.",
+      "Performed comprehensive end-to-end testing covering functional, regression, smoke, sanity, and integration test scenarios.",
+      "Conducted API contract testing and service-level validation using REST APIs to ensure backend reliability.",
+      "Drove defect triage, root cause analysis, and risk-based testing to improve overall release confidence and reduce production incidents."
+    ]
+  },
+  {
     id: "skillsoft",
     company: "SkillSoft",
     position: "Senior QA Engineer",
